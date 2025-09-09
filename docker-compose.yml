@@ -1,0 +1,18 @@
+version: '3.8'
+services:
+  mysql_db:
+    image: mysql:8.0
+    container_name: autohack-mysql-db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: 'rootpassword' # 개발용 루트 비밀번호입니다.
+      MYSQL_DATABASE: 'autohack_db'      # 생성할 데이터베이스 이름입니다.
+      MYSQL_USER: 'appuser'             # 애플리케이션이 사용할 유저 이름입니다.
+      MYSQL_PASSWORD: 'apppassword'      # 위 유저의 비밀번호입니다.
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+
+volumes:
+  mysql-data:
